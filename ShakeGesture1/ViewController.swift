@@ -9,6 +9,7 @@
 import UIKit
 import CoreMotion
 import AVFoundation
+import AudioToolbox
 
 class ViewController: UIViewController {
     
@@ -29,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     func getAccelerometer() {
-        motionManager.accelerometerUpdateInterval = 1 / 100
+        motionManager.accelerometerUpdateInterval = 0.2
         motionManager.startAccelerometerUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
@@ -41,51 +42,38 @@ class ViewController: UIViewController {
     func updateAccelerationData(data: CMAcceleration) {
         print(data)
         
+        var preBool = false
+        var postBool = false
+        
         let x = data.x
         let y = data.y
         let z = data.z
         let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
         
-        if synthetic >= 5 {
-            print("sound")
+        if preBool {
+            postBool = true
+        }
+        
+        if !postBool && synthetic >= 6 {
+            audioPlayer.currentTime = 0 //再生中の音を止める
             audioPlayer.play()
+            
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate) //バイブレーション
+            
+            preBool = true
+        }
+        
+        if postBool && synthetic >= 6 {
+            audioPlayer.currentTime = 0
+            audioPlayer.play()
+            
+            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
+            
+            postBool = false
+            preBool = false
         }
         
     }
-
-
-    
-    
-    
-    
-    
-    
-//    let motionManager = CMMotionManager()
-//    var x = 0
-//    var y = 0
-//    var z = 0
-//
-//    var shakesCount = 0
-//
-//    @IBOutlet weak var countLabel: UILabel!
-//
-//
-//
-//    func updateAccelerationData(data: CMAcceleration) {
-//
-//        print(("x = \(Int(data.x)), y = \(Int(data.y)), z = \(Int(data.z))"))
-//
-//        var isShaken = self.x != Int(data.x) || self.y != Int(data.y) || self.z != Int(data.z)
-//
-//        if isShaken {
-//            shakesCount += 1
-//            countLabel.text = String(shakesCount)
-//        }
-//
-//        self.x = Int(data.x)
-//        self.y = Int(data.y)
-//        self.z = Int(data.z)
-//    }
 
 }
 
@@ -95,7 +83,6 @@ extension ViewController: AVAudioPlayerDelegate {
             print("音声ファイルが見つかりません")
             return
         }
-        
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             
