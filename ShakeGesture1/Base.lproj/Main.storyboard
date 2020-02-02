@@ -15,37 +15,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You shook me" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZuO-lR-pKN">
-                                <rect key="frame" x="0.0" y="244" width="414" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D3d-6l-3TL">
-                                <rect key="frame" x="65" y="288" width="284" height="158"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3X-vI-xYN">
+                                <rect key="frame" x="107" y="373" width="200" height="150"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="158" id="k9T-7y-qoR"/>
-                                    <constraint firstAttribute="width" constant="284" id="pRi-ya-5Kn"/>
+                                    <constraint firstAttribute="width" constant="200" id="MS2-VZ-ni1"/>
+                                    <constraint firstAttribute="height" constant="150" id="Nfe-i3-PJs"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="tapButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qx2-yI-mpx"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ZuO-lR-pKN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7zC-WV-lAm"/>
-                            <constraint firstItem="D3d-6l-3TL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="65" id="GhT-Ba-uXe"/>
-                            <constraint firstItem="ZuO-lR-pKN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="WTU-1q-705"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZuO-lR-pKN" secondAttribute="trailing" id="fz2-rU-sVK"/>
-                            <constraint firstItem="ZuO-lR-pKN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="icb-t7-O39"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="D3d-6l-3TL" secondAttribute="trailing" constant="65" id="wfm-JD-YGI"/>
-                            <constraint firstItem="D3d-6l-3TL" firstAttribute="top" secondItem="ZuO-lR-pKN" secondAttribute="bottom" constant="8" id="zSY-4Y-sb7"/>
+                            <constraint firstItem="z3X-vI-xYN" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Tyl-ba-kGd"/>
+                            <constraint firstItem="z3X-vI-xYN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vzn-Ul-zVR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="countLabel" destination="D3d-6l-3TL" id="DDS-bU-CIf"/>
+                        <outlet property="button" destination="z3X-vI-xYN" id="PYL-lK-Cby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

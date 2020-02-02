@@ -15,6 +15,7 @@
 		671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671BC43023E32CD50096C40F /* LaunchScreen.storyboard */; };
 		671BC43D23E32CD60096C40F /* ShakeGesture1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC43C23E32CD60096C40F /* ShakeGesture1Tests.swift */; };
 		671BC44823E32CD60096C40F /* ShakeGesture1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */; };
+		671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671BC45523E6D8AE0096C40F /* light_saber3.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		671BC44323E32CD60096C40F /* ShakeGesture1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShakeGesture1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGesture1UITests.swift; sourceTree = "<group>"; };
 		671BC44923E32CD60096C40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		671BC45523E6D8AE0096C40F /* light_saber3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = light_saber3.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		671BC42423E32CCE0096C40F /* ShakeGesture1 */ = {
 			isa = PBXGroup;
 			children = (
+				671BC45523E6D8AE0096C40F /* light_saber3.mp3 */,
 				671BC42523E32CCE0096C40F /* AppDelegate.swift */,
 				671BC42723E32CCE0096C40F /* SceneDelegate.swift */,
 				671BC42923E32CCE0096C40F /* ViewController.swift */,
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */,
+				671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */,
 				671BC42F23E32CD50096C40F /* Assets.xcassets in Resources */,
 				671BC42D23E32CCE0096C40F /* Main.storyboard in Resources */,
 			);

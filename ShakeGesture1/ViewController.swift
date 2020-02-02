@@ -8,25 +8,29 @@
 
 import UIKit
 import CoreMotion
-import <#module#>
+import AVFoundation
 
 class ViewController: UIViewController {
     
     let motionManager = CMMotionManager()
-    var x = 0
-    var y = 0
-    var z = 0
+    var audioPlayer = AVAudioPlayer()
     
-    var shakesCount = 0
-    
-    @IBOutlet weak var countLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        countLabel.text = String(shakesCount)
         
-        self.motionManager.accelerometerUpdateInterval = 0.5
-        self.motionManager.startAccelerometerUpdates(to: OperationQueue()) {
+        getAccelerometer()
+        setSound()
+    }
+    
+    @IBAction func tapButton(_ sender: Any) {
+        print("buttonTapped")
+    }
+    
+    func getAccelerometer() {
+        motionManager.accelerometerUpdateInterval = 1 / 100
+        motionManager.startAccelerometerUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
                 self.updateAccelerationData(data: (data?.acceleration)!)
@@ -35,32 +39,70 @@ class ViewController: UIViewController {
     }
     
     func updateAccelerationData(data: CMAcceleration) {
-
-        print(("x = \(Int(data.x)), y = \(Int(data.y)), z = \(Int(data.z))"))
-
-        var isShaken = self.x != Int(data.x) || self.y != Int(data.y) || self.z != Int(data.z)
-
-        if isShaken {
-            shakesCount += 1
-            countLabel.text = String(shakesCount)
+        print(data)
+        
+        let x = data.x
+        let y = data.y
+        let z = data.z
+        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
+        
+        if synthetic >= 5 {
+            print("sound")
+            audioPlayer.play()
         }
-
-        self.x = Int(data.x)
-        self.y = Int(data.y)
-        self.z = Int(data.z)
+        
     }
-    
-    //override func becomeFirstResponder() -> Bool {
-        //return true
-    //}
-    
-    //override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-    //    if motion == .motionShake {
-    //        shakesCount += 1
-    //        countLabel.text = String(shakesCount)
-    //    }
-    //}
 
+
+    
+    
+    
+    
+    
+    
+//    let motionManager = CMMotionManager()
+//    var x = 0
+//    var y = 0
+//    var z = 0
+//
+//    var shakesCount = 0
+//
+//    @IBOutlet weak var countLabel: UILabel!
+//
+//
+//
+//    func updateAccelerationData(data: CMAcceleration) {
+//
+//        print(("x = \(Int(data.x)), y = \(Int(data.y)), z = \(Int(data.z))"))
+//
+//        var isShaken = self.x != Int(data.x) || self.y != Int(data.y) || self.z != Int(data.z)
+//
+//        if isShaken {
+//            shakesCount += 1
+//            countLabel.text = String(shakesCount)
+//        }
+//
+//        self.x = Int(data.x)
+//        self.y = Int(data.y)
+//        self.z = Int(data.z)
+//    }
 
 }
 
+extension ViewController: AVAudioPlayerDelegate {
+    func setSound() {
+        guard let path = Bundle.main.path(forResource: "light_saber3", ofType: "mp3") else {
+            print("音声ファイルが見つかりません")
+            return
+        }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            audioPlayer.delegate = self
+            audioPlayer.prepareToPlay()
+        } catch {
+            print("音声セットエラー")
+        }
+    }
+}
