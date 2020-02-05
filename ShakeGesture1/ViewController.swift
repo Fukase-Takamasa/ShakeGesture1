@@ -152,7 +152,7 @@ extension ViewController: AVAudioPlayerDelegate {
     
     func setShakeSound2(_ resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
-            print("shake音声ファイルが見つかりません")
+            print("shake2音声ファイルが見つかりません")
             return
         }
         do {
@@ -161,7 +161,7 @@ extension ViewController: AVAudioPlayerDelegate {
             shakeAudioPlayer2.delegate = self
             shakeAudioPlayer2.prepareToPlay()
         } catch {
-            print("shake音声セットエラー")
+            print("shake2音声セットエラー")
         }
     }
     
