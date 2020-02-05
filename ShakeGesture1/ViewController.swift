@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     }
     
     func getAccelerometer() {
-        motionManager.accelerometerUpdateInterval = 0.2
+        motionManager.accelerometerUpdateInterval = 0.1
         motionManager.startAccelerometerUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             postBool = true
         }
         
-        if !postBool && synthetic >= 6 {
+        if !postBool && synthetic >= 5 {
             audioPlayer.currentTime = 0 //再生中の音を止める
             audioPlayer.play()
             
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
             preBool = true
         }
         
-        if postBool && synthetic >= 6 {
+        if postBool && synthetic >= 5 {
             audioPlayer.currentTime = 0
             audioPlayer.play()
             
