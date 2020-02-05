@@ -23,7 +23,7 @@ class ViewController: UIViewController {
     
     var preBool = false
     var postBool = false
-    var currentShakeSoundType = true
+    var pistolBullets = 7
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var button: UIButton!
@@ -32,20 +32,21 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         setSounds()
+        audioPlayer1.play()
         getAccelerometer()
         getGyro()
     }
     
     @IBAction func tapSegmentControl(_ sender: Any) {
         setSounds()
+        audioPlayer1.play()
     }
     
     @IBAction func tapButton(_ sender: Any) {
-        startAudioPlayer.play()
     }
     
     func getAccelerometer() {
-        motionManager.accelerometerUpdateInterval = 0.1
+        motionManager.accelerometerUpdateInterval = 0.2
         motionManager.startAccelerometerUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
@@ -61,42 +62,26 @@ class ViewController: UIViewController {
         let x = data.x
         let y = data.y
         let z = data.z
-        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
         
-        if preBool {
-            postBool = true
-        }
-        
-        if !postBool && synthetic >= 4 {
-            if currentShakeSoundType {
-                shakeAudioPlayer.currentTime = 0
-                shakeAudioPlayer.play()
-            }else {
-                shakeAudioPlayer2.currentTime = 0
-                shakeAudioPlayer2.play()
-            }
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
-            
-            preBool = true
-        }
-
-        if postBool && synthetic >= 4 {
-            if currentShakeSoundType {
-                shakeAudioPlayer.currentTime = 0
-                shakeAudioPlayer.play()
-            }else {
-                shakeAudioPlayer2.currentTime = 0
-                shakeAudioPlayer2.play()
-            }
-            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
-
-            postBool = false
-            preBool = false
+        let index = self.segmentControl.selectedSegmentIndex
+        switch index {
+        case 0:
+            katanaAccelerometer(x, y, z)
+        case 1:
+            lightSaberAccelerometer(x, y, z)
+        case 2:
+            pistolAccelerometer(x, y, z)
+        case 3:
+            break
+        case 4:
+            break
+        default:
+            break
         }
     }
     
     func getGyro() {
-        motionManager.gyroUpdateInterval = 0.5
+        motionManager.gyroUpdateInterval = 0.2
         motionManager.startGyroUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
@@ -108,33 +93,226 @@ class ViewController: UIViewController {
     
     func updateGyroData(data: CMRotationRate) {
         print("ジャイロデータ: \(data)")
+        let x = data.x
         let y = data.y
-        let synthetic = (y * y)
+        let z = data.z
         
-        if synthetic >= 8 {
-            print("ジャイロセンサー反応")
-            if currentShakeSoundType {
-                currentShakeSoundType = false
-            }else {
-                currentShakeSoundType = true
-            }
-            shakeAudioPlayer.currentTime = 0
-            gyroAudioPlayer.play()
-            print("currentShakeSoundType: \(self.currentShakeSoundType)")
+        let index = self.segmentControl.selectedSegmentIndex
+        switch index {
+        case 0:
+            katanaGyro(x, y, z)
+        case 1:
+            break
+        case 2:
+            pistolGyro(x, y, z)
+        case 3:
+            motorBikeGyro(x, y, z)
+        case 4:
+            break
+        default:
+            break
         }
     }
 
+}
+
+extension ViewController {
+    
+    func resetAllAudioPlayerTime() {
+        audioPlayer1.currentTime = 0
+        audioPlayer2.currentTime = 0
+        audioPlayer3.currentTime = 0
+        audioPlayer4.currentTime = 0
+        audioPlayer5.currentTime = 0
+    }
+    
+    func vibration() {
+        AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
+    }
+    
+    func katanaAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
+        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
+        
+        if preBool {
+            postBool = true
+        }
+        if !postBool {
+            if (x * x) >= 8 && (y * y) + (z * z) <= 4 {
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                preBool = true
+            }else if synthetic >= 4 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                preBool = true
+            }
+        }
+        if !postBool {
+            if (x * x) >= 8 && (y * y) + (z * z) <= 4 {
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                preBool = true
+            }else if synthetic >= 4 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }
+        }
+    }
+    
+    func katanaGyro(_ x: Double, _ y: Double, _ z: Double) {
+        if (y * y) >= 3 {
+            audioPlayer4.play()
+        }
+    }
+    
+    func lightSaberAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
+        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
+        if preBool {
+            postBool = true
+        }
+        if !postBool && synthetic >= 4 {
+            resetAllAudioPlayerTime()
+            audioPlayer2.play()
+            vibration()
+            preBool = true
+        }
+        if postBool && synthetic >= 4 {
+            resetAllAudioPlayerTime()
+            audioPlayer2.play()
+            vibration()
+            postBool = false
+            preBool = false
+        }
+    }
+    
+    func pistolAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
+        
+        if preBool {
+            postBool = true
+        }
+        if !postBool && (x * x) + (y * y) >= 8 {
+            if pistolBullets > 0 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                preBool = true
+                pistolBullets -= 1
+            }else if pistolBullets <= 0 {
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                preBool = true
+            }
+        }
+        if postBool && (x * x) + (y * y) >= 8 {
+            if pistolBullets > 0 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+                pistolBullets -= 1
+            }else if pistolBullets <= 0 {
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }
+        }
+    }
+    
+    func pistolGyro(_ x: Double, _ y: Double, _ z: Double) {
+        if (x * x) >= 3 {
+            pistolBullets = 7
+            audioPlayer4.play()
+        }
+    }
+    
+    func motorBikeGyro(_ x: Double, _ y: Double, _ z: Double) {
+        if preBool {
+            postBool = true
+        }
+        if !postBool {
+            if (y * y) >= 3 && (y * y) <= 4.9 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                preBool = true
+            }else if (y * y) >= 5 && (y * y) <= 7.9 {
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                preBool = true
+            }else if (y * y) >= 8 {
+                resetAllAudioPlayerTime()
+                audioPlayer4.play()
+                vibration()
+                preBool = true
+            }
+        }
+        if postBool {
+            if (y * y) >= 3 && (y * y) <= 4.9 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }else if (y * y) >= 5 && (y * y) <= 7.9 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }else if (y * y) >= 8 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }
+        }
+    }
 }
 
 extension ViewController: AVAudioPlayerDelegate {
     
     func setSounds() {
         let index = self.segmentControl.selectedSegmentIndex
-        setAudioPlayer1(SoundList.sounds[index]["shake1"]!)
-        setAudioPlayer2(SoundList.sounds[index]["shake2"]!)
-        setAudioPlayer3(SoundList.sounds[index]["start"]!)
-        setAudioPlayer4(SoundList.sounds[index]["gyro"]!)
-        setAudioPlayer5(SoundList.sounds[index]["gyro"]!)
+        switch index {
+        case 0:
+            setAudioPlayer1("katana_drawing")
+            setAudioPlayer2("katana_slash")
+            setAudioPlayer3("katana_sting")
+            setAudioPlayer4("katana_hold")
+        case 1:
+            setAudioPlayer1("lightSaber_start")
+            setAudioPlayer2("lightSaber_swing")
+        case 2:
+            setAudioPlayer1("ultraSoul_start")
+            setAudioPlayer2("ultraSoul_1")
+            setAudioPlayer3("ultraSoul_2")
+            setAudioPlayer4("ultraSoul_3")
+            setAudioPlayer5("ultraSoul_4")
+        case 3:
+            setAudioPlayer1("pistol-slide")
+            setAudioPlayer2("pistol-fire")
+            setAudioPlayer3("pistol-out-bullets")
+            setAudioPlayer4("pistol-reload")
+        case 4:
+            setAudioPlayer1("motorBike_engineStart")
+            setAudioPlayer2("motorBike_engine1")
+            setAudioPlayer3("motorBike_engine2")
+            setAudioPlayer4("motorBike_engine3")
+        default:
+            break
+        }
     }
     
     func setAudioPlayer1(_ resourceFileName: String) {

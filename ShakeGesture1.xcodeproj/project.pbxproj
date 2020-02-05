@@ -22,7 +22,7 @@
 		671BC43D23E32CD60096C40F /* ShakeGesture1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC43C23E32CD60096C40F /* ShakeGesture1Tests.swift */; };
 		671BC44823E32CD60096C40F /* ShakeGesture1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */; };
 		671BC45623E6D8AE0096C40F /* lightSaber_swing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671BC45523E6D8AE0096C40F /* lightSaber_swing.mp3 */; };
-		6792454723EB01790006C427 /* katana-slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454623EB01790006C427 /* katana-slash.mp3 */; };
+		6792454723EB01790006C427 /* katana_slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454623EB01790006C427 /* katana_slash.mp3 */; };
 		6792455123EB1ECB0006C427 /* motorBike_engine1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454D23EB1ECB0006C427 /* motorBike_engine1.mp3 */; };
 		6792455223EB1ECB0006C427 /* motorBike_engineStart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454E23EB1ECB0006C427 /* motorBike_engineStart.mp3 */; };
 		6792455323EB1ECB0006C427 /* motorBike_engine3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454F23EB1ECB0006C427 /* motorBike_engine3.mp3 */; };
@@ -78,7 +78,7 @@
 		671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGesture1UITests.swift; sourceTree = "<group>"; };
 		671BC44923E32CD60096C40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		671BC45523E6D8AE0096C40F /* lightSaber_swing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lightSaber_swing.mp3; sourceTree = "<group>"; };
-		6792454623EB01790006C427 /* katana-slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "katana-slash.mp3"; sourceTree = "<group>"; };
+		6792454623EB01790006C427 /* katana_slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_slash.mp3; sourceTree = "<group>"; };
 		6792454D23EB1ECB0006C427 /* motorBike_engine1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engine1.mp3; sourceTree = "<group>"; };
 		6792454E23EB1ECB0006C427 /* motorBike_engineStart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engineStart.mp3; sourceTree = "<group>"; };
 		6792454F23EB1ECB0006C427 /* motorBike_engine3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engine3.mp3; sourceTree = "<group>"; };
@@ -193,7 +193,7 @@
 				591065C123EAB3A800E99968 /* katana_drawing.mp3 */,
 				591065C723EAB51400E99968 /* katana_hold.mp3 */,
 				591065C623EAB51400E99968 /* katana_swing.mp3 */,
-				6792454623EB01790006C427 /* katana-slash.mp3 */,
+				6792454623EB01790006C427 /* katana_slash.mp3 */,
 				591065C023EAB3A700E99968 /* katana_sting.mp3 */,
 			);
 			path = Katana;
@@ -365,7 +365,7 @@
 				671BC42D23E32CCE0096C40F /* Main.storyboard in Resources */,
 				6792455C23EB1EE90006C427 /* ultraSoul_4.mp3 in Resources */,
 				591065C923EAB51400E99968 /* katana_hold.mp3 in Resources */,
-				6792454723EB01790006C427 /* katana-slash.mp3 in Resources */,
+				6792454723EB01790006C427 /* katana_slash.mp3 in Resources */,
 				591065C823EAB51400E99968 /* katana_swing.mp3 in Resources */,
 				6792455423EB1ECB0006C427 /* motorBike_engine2.mp3 in Resources */,
 				6792455123EB1ECB0006C427 /* motorBike_engine1.mp3 in Resources */,
