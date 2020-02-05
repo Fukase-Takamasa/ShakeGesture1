@@ -21,9 +21,9 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O9i-C7-jAN">
                                         <rect key="frame" x="35.5" y="270" width="323" height="32"/>
                                         <segments>
-                                            <segment title="稲葉さん"/>
-                                            <segment title="ライトセーバー"/>
                                             <segment title="日本刀"/>
+                                            <segment title="ライトセーバー"/>
+                                            <segment title="稲葉さん"/>
                                         </segments>
                                         <color key="selectedSegmentTintColor" red="0.63591402770000005" green="0.68748283389999998" blue="0.53329366450000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <userDefinedRuntimeAttributes>
@@ -37,6 +37,9 @@
                                                 <size key="value" width="0.0" height="0.0"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tapSegmentControl:" destination="BYZ-38-t0r" eventType="valueChanged" id="KAi-r7-OVY"/>
+                                        </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z3X-vI-xYN" customClass="DesignableButton" customModule="ShakeGesture1" customModuleProvider="target">
                                         <rect key="frame" x="84" y="520" width="226" height="118"/>
@@ -101,6 +104,7 @@
                     </view>
                     <connections>
                         <outlet property="button" destination="z3X-vI-xYN" id="PYL-lK-Cby"/>
+                        <outlet property="segmentControl" destination="O9i-C7-jAN" id="iGI-vV-H5f"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

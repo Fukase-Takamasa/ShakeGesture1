@@ -17,14 +17,19 @@ class ViewController: UIViewController {
     var shakeAudioPlayer = AVAudioPlayer()
     var startAudioPlayer = AVAudioPlayer()
     
+    @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var button: UIButton!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getAccelerometer()
-        setShakeSound()
-        setStartSound()
+        setShakeSound("katana_slash")
+        setStartSound("katana_drawing")
+        setGyroSound("katana_hold")
+    }
+    
+    @IBAction func tapSegmentControl(_ sender: Any) {
     }
     
     @IBAction func tapButton(_ sender: Any) {
@@ -80,8 +85,8 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: AVAudioPlayerDelegate {
-    func setShakeSound() {
-        guard let path = Bundle.main.path(forResource: "light_saber3", ofType: "mp3") else {
+    func setShakeSound(_ resourceFileName: String) {
+        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("shake音声ファイルが見つかりません")
             return
         }
@@ -95,8 +100,23 @@ extension ViewController: AVAudioPlayerDelegate {
         }
     }
     
-    func setStartSound() {
-        guard let path = Bundle.main.path(forResource: "electric_chain", ofType: "mp3") else {
+    func setStartSound(_ resourceFileName: String) {
+        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
+            print("start音声ファイルが見つかりません。")
+            return
+        }
+        do {
+            startAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            startAudioPlayer.delegate = self
+            startAudioPlayer.prepareToPlay()
+        } catch {
+            print("start音声セットエラー")
+        }
+    }
+    
+    func setGyroSound(_ resourceFileName: String) {
+        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("start音声ファイルが見つかりません。")
             return
         }
