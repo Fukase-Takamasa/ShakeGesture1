@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     let motionManager = CMMotionManager()
     var shakeAudioPlayer = AVAudioPlayer()
     var startAudioPlayer = AVAudioPlayer()
+    var gyroAudioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var button: UIButton!
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapSegmentControl(_ sender: Any) {
+        //後でセグメントindexによって音源をセットし直す
     }
     
     @IBAction func tapButton(_ sender: Any) {
@@ -41,13 +43,14 @@ class ViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue()) {
             (data, error) in
             DispatchQueue.main.async {
-                self.updateAccelerationData(data: (data?.acceleration)!)
+                guard let acceleration = data?.acceleration else { return }
+                self.updateAccelerationData(data: acceleration)
             }
         }
     }
     
     func updateAccelerationData(data: CMAcceleration) {
-        print(data)
+        print("加速度データ: \(data)")
         
         var preBool = false
         var postBool = false
@@ -69,7 +72,7 @@ class ViewController: UIViewController {
             
             preBool = true
         }
-        
+
         if postBool && synthetic >= 3 {
             shakeAudioPlayer.currentTime = 0
             shakeAudioPlayer.play()
@@ -79,7 +82,43 @@ class ViewController: UIViewController {
             postBool = false
             preBool = false
         }
+    }
+    
+    func getGyro() {
+        motionManager.gyroUpdateInterval = 0.5
+        motionManager.startGyroUpdates(to: OperationQueue()) {
+            (data, error) in
+            DispatchQueue.main.async {
+                guard let rotationRate = data?.rotationRate else { return }
+                self.updateGyroData(data: rotationRate)
+            }
+        }
+    }
+    
+    func changeShakeSoundInCurrentMode(_ currentShakeSoundType: Bool) -> Bool {
+        let shakeSoundList = [["katana_swing", "katana_slash"], ["light_saber", "light_saber"], ["light_saber", "light_saber"]]
+        let segmentIndex = self.segmentControl.selectedSegmentIndex
+        if currentShakeSoundType {
+            setGyroSound(shakeSoundList[segmentIndex][1])
+            return false
+        }else {
+            setGyroSound(shakeSoundList[segmentIndex][0])
+            return true
+        }
+    }
+    
+    func updateGyroData(data: CMRotationRate) {
+        print("ジャイロデータ: \(data)")
+
+        var currentShakeSoundType = true
         
+        let y = data.y
+        let synthetic = (y * y)
+        
+        if synthetic >= 6 {
+            currentShakeSoundType = changeShakeSoundInCurrentMode(currentShakeSoundType)
+            gyroAudioPlayer.play()
+        }
     }
 
 }
