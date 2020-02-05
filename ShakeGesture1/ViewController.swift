@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         case 3:
             break
         case 4:
-            break
+            ultraSoulAccelerometer(x, y, z)
         default:
             break
         }
@@ -108,13 +108,13 @@ class ViewController: UIViewController {
         case 3:
             motorBikeGyro(x, y, z)
         case 4:
-            break
+            ultraSoulGyro(x, y, z)
         default:
             break
         }
     }
-
 }
+
 
 extension ViewController {
     
@@ -131,31 +131,29 @@ extension ViewController {
     }
     
     func katanaAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
-        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
-        
         if preBool {
             postBool = true
         }
         if !postBool {
-            if (x * x) >= 8 && (y * y) + (z * z) <= 4 {
+            if (x * x) >= 8 {
                 resetAllAudioPlayerTime()
                 audioPlayer3.play()
                 vibration()
                 preBool = true
-            }else if synthetic >= 4 {
+            }else if (y * y) + (z * z) >= 6  {
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 preBool = true
             }
         }
-        if !postBool {
-            if (x * x) >= 8 && (y * y) + (z * z) <= 4 {
+        if postBool {
+            if (x * x) >= 8 {
                 resetAllAudioPlayerTime()
                 audioPlayer3.play()
                 vibration()
                 preBool = true
-            }else if synthetic >= 4 {
+                }else if (y * y) + (z * z) >= 6  {
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
@@ -166,7 +164,7 @@ extension ViewController {
     }
     
     func katanaGyro(_ x: Double, _ y: Double, _ z: Double) {
-        if (y * y) >= 3 {
+        if (y * y) >= 5 {
             audioPlayer4.play()
         }
     }
@@ -176,13 +174,13 @@ extension ViewController {
         if preBool {
             postBool = true
         }
-        if !postBool && synthetic >= 4 {
+        if !postBool && synthetic >= 6 {
             resetAllAudioPlayerTime()
             audioPlayer2.play()
             vibration()
             preBool = true
         }
-        if postBool && synthetic >= 4 {
+        if postBool && synthetic >= 6 {
             resetAllAudioPlayerTime()
             audioPlayer2.play()
             vibration()
@@ -192,17 +190,17 @@ extension ViewController {
     }
     
     func pistolAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
-        
+        print("ピストルの残弾数: \(pistolBullets) / 7発")
         if preBool {
             postBool = true
         }
-        if !postBool && (x * x) + (y * y) >= 8 {
+        if !postBool && (x * x) + (y * y) >= 6 {
             if pistolBullets > 0 {
+                pistolBullets -= 1
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 preBool = true
-                pistolBullets -= 1
             }else if pistolBullets <= 0 {
                 resetAllAudioPlayerTime()
                 audioPlayer3.play()
@@ -210,14 +208,14 @@ extension ViewController {
                 preBool = true
             }
         }
-        if postBool && (x * x) + (y * y) >= 8 {
+        if postBool && (x * x) + (y * y) >= 6 {
             if pistolBullets > 0 {
+                pistolBullets -= 1
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 postBool = false
                 preBool = false
-                pistolBullets -= 1
             }else if pistolBullets <= 0 {
                 resetAllAudioPlayerTime()
                 audioPlayer3.play()
@@ -229,9 +227,10 @@ extension ViewController {
     }
     
     func pistolGyro(_ x: Double, _ y: Double, _ z: Double) {
-        if (x * x) >= 3 {
+        if (x * x) >= 8 {
             pistolBullets = 7
             audioPlayer4.play()
+            print("ピストルの弾をリロードしました  残弾数: \(pistolBullets)発")
         }
     }
     
@@ -240,17 +239,17 @@ extension ViewController {
             postBool = true
         }
         if !postBool {
-            if (y * y) >= 3 && (y * y) <= 4.9 {
+            if (y * y) >= 3 && (y * y) <= 5.9 {
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 preBool = true
-            }else if (y * y) >= 5 && (y * y) <= 7.9 {
+            }else if (y * y) >= 6 && (y * y) <= 8.9 {
                 resetAllAudioPlayerTime()
                 audioPlayer3.play()
                 vibration()
                 preBool = true
-            }else if (y * y) >= 8 {
+            }else if (y * y) >= 9 {
                 resetAllAudioPlayerTime()
                 audioPlayer4.play()
                 vibration()
@@ -258,19 +257,87 @@ extension ViewController {
             }
         }
         if postBool {
-            if (y * y) >= 3 && (y * y) <= 4.9 {
+            if (y * y) >= 3 && (y * y) <= 5.9 {
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 postBool = false
                 preBool = false
-            }else if (y * y) >= 5 && (y * y) <= 7.9 {
+            }else if (y * y) >= 6 && (y * y) <= 8.9 {
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
                 postBool = false
                 preBool = false
-            }else if (y * y) >= 8 {
+            }else if (y * y) >= 9 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }
+        }
+    }
+    
+    func ultraSoulAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
+        if preBool {
+            postBool = true
+        }
+        if !postBool {
+            if (y * y) >= 6 {
+                resetAllAudioPlayerTime()
+                audioPlayer4.play()
+                vibration()
+                preBool = true
+            }else if (x * x) >= 6 {
+                resetAllAudioPlayerTime()
+                audioPlayer5.play()
+                vibration()
+                preBool = true
+            }
+        }
+        if postBool {
+            if (y * y) >= 6 {
+                resetAllAudioPlayerTime()
+                audioPlayer4.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }else if (x * x) >= 6 {
+                resetAllAudioPlayerTime()
+                audioPlayer5.play()
+                vibration()
+                postBool = false
+                preBool = false
+            }
+        }
+    }
+    
+    func ultraSoulGyro(_ x: Double, _ y: Double, _ z: Double) {
+        if preBool {
+            postBool = true
+        }
+        if !postBool {
+            if x <= -3 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                preBool = true
+            }else if x >= 3{
+                resetAllAudioPlayerTime()
+                audioPlayer3.play()
+                vibration()
+                preBool = true
+            }
+        }
+        if postBool {
+            if x <= -3 {
+                resetAllAudioPlayerTime()
+                audioPlayer2.play()
+                vibration()
+                postBool = false
+                preBool = false
+                }else if x >= 3{
                 resetAllAudioPlayerTime()
                 audioPlayer2.play()
                 vibration()
@@ -295,21 +362,21 @@ extension ViewController: AVAudioPlayerDelegate {
             setAudioPlayer1("lightSaber_start")
             setAudioPlayer2("lightSaber_swing")
         case 2:
+            setAudioPlayer1("pistol-slide")
+            setAudioPlayer2("pistol-fire")
+            setAudioPlayer3("pistol-out-bullets")
+            setAudioPlayer4("pistol-reload")
+        case 3:
+            setAudioPlayer1("motorBike_engineStart")
+            setAudioPlayer2("motorBike_engine1")
+            setAudioPlayer3("motorBike_engine2")
+            setAudioPlayer4("motorBike_engine3")
+        case 4:
             setAudioPlayer1("ultraSoul_start")
             setAudioPlayer2("ultraSoul_1")
             setAudioPlayer3("ultraSoul_2")
             setAudioPlayer4("ultraSoul_3")
             setAudioPlayer5("ultraSoul_4")
-        case 3:
-            setAudioPlayer1("pistol-slide")
-            setAudioPlayer2("pistol-fire")
-            setAudioPlayer3("pistol-out-bullets")
-            setAudioPlayer4("pistol-reload")
-        case 4:
-            setAudioPlayer1("motorBike_engineStart")
-            setAudioPlayer2("motorBike_engine1")
-            setAudioPlayer3("motorBike_engine2")
-            setAudioPlayer4("motorBike_engine3")
         default:
             break
         }
