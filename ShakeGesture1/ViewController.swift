@@ -14,7 +14,8 @@ import AudioToolbox
 class ViewController: UIViewController {
     
     let motionManager = CMMotionManager()
-    var audioPlayer = AVAudioPlayer()
+    var shakeAudioPlayer = AVAudioPlayer()
+    var startAudioPlayer = AVAudioPlayer()
     
     @IBOutlet weak var button: UIButton!
     
@@ -22,11 +23,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         getAccelerometer()
-        setSound()
+        setShakeSound()
+        setStartSound()
     }
     
     @IBAction func tapButton(_ sender: Any) {
-        print("buttonTapped")
+        startAudioPlayer.play()
     }
     
     func getAccelerometer() {
@@ -55,20 +57,20 @@ class ViewController: UIViewController {
         }
         
         if !postBool && synthetic >= 3 {
-            audioPlayer.currentTime = 0 //再生中の音を止める
-            audioPlayer.play()
+            shakeAudioPlayer.currentTime = 0 //再生中の音を止める
+            shakeAudioPlayer.play()
             
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate) //バイブレーション
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
             
             preBool = true
         }
         
-        if postBool && synthetic >= 5 {
-            audioPlayer.currentTime = 0
-            audioPlayer.play()
+        if postBool && synthetic >= 3 {
+            shakeAudioPlayer.currentTime = 0
+            shakeAudioPlayer.play()
             
-            AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
-            
+            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
+
             postBool = false
             preBool = false
         }
@@ -78,18 +80,33 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: AVAudioPlayerDelegate {
-    func setSound() {
+    func setShakeSound() {
         guard let path = Bundle.main.path(forResource: "light_saber3", ofType: "mp3") else {
-            print("音声ファイルが見つかりません")
+            print("shake音声ファイルが見つかりません")
             return
         }
         do {
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            shakeAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             
-            audioPlayer.delegate = self
-            audioPlayer.prepareToPlay()
+            shakeAudioPlayer.delegate = self
+            shakeAudioPlayer.prepareToPlay()
         } catch {
-            print("音声セットエラー")
+            print("shake音声セットエラー")
+        }
+    }
+    
+    func setStartSound() {
+        guard let path = Bundle.main.path(forResource: "electric_chain", ofType: "mp3") else {
+            print("start音声ファイルが見つかりません。")
+            return
+        }
+        do {
+            startAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            startAudioPlayer.delegate = self
+            startAudioPlayer.prepareToPlay()
+        } catch {
+            print("start音声セットエラー")
         }
     }
 }
