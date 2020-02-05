@@ -9,9 +9,10 @@
 /* Begin PBXBuildFile section */
 		591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065BB23EAA01C00E99968 /* electric_chain.mp3 */; };
 		591065BE23EAAC4700E99968 /* Extension+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */; };
-		591065C223EAB3A800E99968 /* katana-hold1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065BF23EAB3A700E99968 /* katana-hold1.mp3 */; };
-		591065C323EAB3A800E99968 /* sword-slash3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C023EAB3A700E99968 /* sword-slash3.mp3 */; };
-		591065C423EAB3A800E99968 /* sword-drawing1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C123EAB3A800E99968 /* sword-drawing1.mp3 */; };
+		591065C323EAB3A800E99968 /* katana_slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C023EAB3A700E99968 /* katana_slash.mp3 */; };
+		591065C423EAB3A800E99968 /* katana_drawing1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C123EAB3A800E99968 /* katana_drawing1.mp3 */; };
+		591065C823EAB51400E99968 /* katana_swing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C623EAB51400E99968 /* katana_swing.mp3 */; };
+		591065C923EAB51400E99968 /* katana_hold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C723EAB51400E99968 /* katana_hold.mp3 */; };
 		671BC42623E32CCE0096C40F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC42523E32CCE0096C40F /* AppDelegate.swift */; };
 		671BC42823E32CCE0096C40F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC42723E32CCE0096C40F /* SceneDelegate.swift */; };
 		671BC42A23E32CCE0096C40F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC42923E32CCE0096C40F /* ViewController.swift */; };
@@ -43,9 +44,10 @@
 /* Begin PBXFileReference section */
 		591065BB23EAA01C00E99968 /* electric_chain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = electric_chain.mp3; sourceTree = "<group>"; };
 		591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Storyboard.swift"; sourceTree = "<group>"; };
-		591065BF23EAB3A700E99968 /* katana-hold1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "katana-hold1.mp3"; sourceTree = "<group>"; };
-		591065C023EAB3A700E99968 /* sword-slash3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sword-slash3.mp3"; sourceTree = "<group>"; };
-		591065C123EAB3A800E99968 /* sword-drawing1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "sword-drawing1.mp3"; sourceTree = "<group>"; };
+		591065C023EAB3A700E99968 /* katana_slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_slash.mp3; sourceTree = "<group>"; };
+		591065C123EAB3A800E99968 /* katana_drawing1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_drawing1.mp3; sourceTree = "<group>"; };
+		591065C623EAB51400E99968 /* katana_swing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_swing.mp3; sourceTree = "<group>"; };
+		591065C723EAB51400E99968 /* katana_hold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_hold.mp3; sourceTree = "<group>"; };
 		671BC42223E32CCE0096C40F /* ShakeGesture1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeGesture1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		671BC42523E32CCE0096C40F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		671BC42723E32CCE0096C40F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,11 +93,12 @@
 		591065C523EAB3B300E99968 /* mp3 */ = {
 			isa = PBXGroup;
 			children = (
-				671BC45523E6D8AE0096C40F /* light_saber3.mp3 */,
 				591065BB23EAA01C00E99968 /* electric_chain.mp3 */,
-				591065BF23EAB3A700E99968 /* katana-hold1.mp3 */,
-				591065C123EAB3A800E99968 /* sword-drawing1.mp3 */,
-				591065C023EAB3A700E99968 /* sword-slash3.mp3 */,
+				671BC45523E6D8AE0096C40F /* light_saber3.mp3 */,
+				591065C123EAB3A800E99968 /* katana_drawing1.mp3 */,
+				591065C723EAB51400E99968 /* katana_hold.mp3 */,
+				591065C623EAB51400E99968 /* katana_swing.mp3 */,
+				591065C023EAB3A700E99968 /* katana_slash.mp3 */,
 			);
 			path = mp3;
 			sourceTree = "<group>";
@@ -258,14 +261,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				591065C323EAB3A800E99968 /* sword-slash3.mp3 in Resources */,
-				591065C423EAB3A800E99968 /* sword-drawing1.mp3 in Resources */,
+				591065C323EAB3A800E99968 /* katana_slash.mp3 in Resources */,
+				591065C423EAB3A800E99968 /* katana_drawing1.mp3 in Resources */,
 				671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */,
-				591065C223EAB3A800E99968 /* katana-hold1.mp3 in Resources */,
 				591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */,
 				671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */,
 				671BC42F23E32CD50096C40F /* Assets.xcassets in Resources */,
 				671BC42D23E32CCE0096C40F /* Main.storyboard in Resources */,
+				591065C923EAB51400E99968 /* katana_hold.mp3 in Resources */,
+				591065C823EAB51400E99968 /* katana_swing.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
