@@ -15,10 +15,11 @@ class ViewController: UIViewController {
     
     let motionManager = CMMotionManager()
     
-    var shakeAudioPlayer = AVAudioPlayer()
-    var shakeAudioPlayer2 = AVAudioPlayer()
-    var startAudioPlayer = AVAudioPlayer()
-    var gyroAudioPlayer = AVAudioPlayer()
+    var audioPlayer1 = AVAudioPlayer()
+    var audioPlayer2 = AVAudioPlayer()
+    var audioPlayer3 = AVAudioPlayer()
+    var audioPlayer4 = AVAudioPlayer()
+    var audioPlayer5 = AVAudioPlayer()
     
     var preBool = false
     var postBool = false
@@ -129,67 +130,78 @@ extension ViewController: AVAudioPlayerDelegate {
     
     func setSounds() {
         let index = self.segmentControl.selectedSegmentIndex
-        setShakeSound(SoundList.sounds[index]["shake1"]!)
-        setShakeSound2(SoundList.sounds[index]["shake2"]!)
-        setStartSound(SoundList.sounds[index]["start"]!)
-        setGyroSound(SoundList.sounds[index]["gyro"]!)
+        setAudioPlayer1(SoundList.sounds[index]["shake1"]!)
+        setAudioPlayer2(SoundList.sounds[index]["shake2"]!)
+        setAudioPlayer3(SoundList.sounds[index]["start"]!)
+        setAudioPlayer4(SoundList.sounds[index]["gyro"]!)
+        setAudioPlayer5(SoundList.sounds[index]["gyro"]!)
     }
     
-    func setShakeSound(_ resourceFileName: String) {
+    func setAudioPlayer1(_ resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("shake音声ファイルが見つかりません")
             return
         }
         do {
-            shakeAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            
-            shakeAudioPlayer.delegate = self
-            shakeAudioPlayer.prepareToPlay()
+            audioPlayer1 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer1.delegate = self
+            audioPlayer1.prepareToPlay()
         } catch {
             print("shake音声セットエラー")
         }
     }
     
-    func setShakeSound2(_ resourceFileName: String) {
+    func setAudioPlayer2(_ resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("shake2音声ファイルが見つかりません")
             return
         }
         do {
-            shakeAudioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            
-            shakeAudioPlayer2.delegate = self
-            shakeAudioPlayer2.prepareToPlay()
+            audioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer2.delegate = self
+            audioPlayer2.prepareToPlay()
         } catch {
             print("shake2音声セットエラー")
         }
     }
     
-    func setStartSound(_ resourceFileName: String) {
+    func setAudioPlayer3(_ resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("start音声ファイルが見つかりません。")
             return
         }
         do {
-            startAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            
-            startAudioPlayer.delegate = self
-            startAudioPlayer.prepareToPlay()
+            audioPlayer3 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer3.delegate = self
+            audioPlayer3.prepareToPlay()
         } catch {
             print("start音声セットエラー")
         }
     }
     
-    func setGyroSound(_ resourceFileName: String) {
+    func setAudioPlayer4(_ resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("gyro音声ファイルが見つかりません。")
             return
         }
         do {
-            gyroAudioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            
-            gyroAudioPlayer.delegate = self
-            gyroAudioPlayer.prepareToPlay()
+            audioPlayer4 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer4.delegate = self
+            audioPlayer4.prepareToPlay()
+        } catch {
+            print("gyro音声セットエラー")
+        }
+    }
+    
+    func setAudioPlayer5(_ resourceFileName: String) {
+        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
+            print("gyro音声ファイルが見つかりません。")
+            return
+        }
+        do {
+            audioPlayer5 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            audioPlayer5.delegate = self
+            audioPlayer5.prepareToPlay()
         } catch {
             print("gyro音声セットエラー")
         }
