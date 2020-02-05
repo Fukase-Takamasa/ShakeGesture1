@@ -30,6 +30,20 @@ open class SoundList {
             "shake2": "katana_slash",
             "start": "katana_drawing",
             "gyro": "katana_hold"
+        ],
+        
+        [
+            "shake1": "katana_swing",
+            "shake2": "katana_slash",
+            "start": "katana_drawing",
+            "gyro": "katana_hold"
+        ],
+        
+        [
+            "shake1": "katana_swing",
+            "shake2": "katana_slash",
+            "start": "katana_drawing",
+            "gyro": "katana_hold"
         ]
     ]
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065BB23EAA01C00E99968 /* electric_chain.mp3 */; };
+		591065BC23EAA01C00E99968 /* lightSaber_start.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065BB23EAA01C00E99968 /* lightSaber_start.mp3 */; };
 		591065BE23EAAC4700E99968 /* Extension+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */; };
 		591065C323EAB3A800E99968 /* katana_sting.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C023EAB3A700E99968 /* katana_sting.mp3 */; };
 		591065C423EAB3A800E99968 /* katana_drawing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C123EAB3A800E99968 /* katana_drawing.mp3 */; };
@@ -21,7 +21,7 @@
 		671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 671BC43023E32CD50096C40F /* LaunchScreen.storyboard */; };
 		671BC43D23E32CD60096C40F /* ShakeGesture1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC43C23E32CD60096C40F /* ShakeGesture1Tests.swift */; };
 		671BC44823E32CD60096C40F /* ShakeGesture1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */; };
-		671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671BC45523E6D8AE0096C40F /* light_saber3.mp3 */; };
+		671BC45623E6D8AE0096C40F /* lightSaber_swing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671BC45523E6D8AE0096C40F /* lightSaber_swing.mp3 */; };
 		6792454723EB01790006C427 /* katana-slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454623EB01790006C427 /* katana-slash.mp3 */; };
 		6792455123EB1ECB0006C427 /* motorBike_engine1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454D23EB1ECB0006C427 /* motorBike_engine1.mp3 */; };
 		6792455223EB1ECB0006C427 /* motorBike_engineStart.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792454E23EB1ECB0006C427 /* motorBike_engineStart.mp3 */; };
@@ -57,7 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		591065BB23EAA01C00E99968 /* electric_chain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = electric_chain.mp3; sourceTree = "<group>"; };
+		591065BB23EAA01C00E99968 /* lightSaber_start.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lightSaber_start.mp3; sourceTree = "<group>"; };
 		591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Storyboard.swift"; sourceTree = "<group>"; };
 		591065C023EAB3A700E99968 /* katana_sting.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_sting.mp3; sourceTree = "<group>"; };
 		591065C123EAB3A800E99968 /* katana_drawing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_drawing.mp3; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		671BC44323E32CD60096C40F /* ShakeGesture1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShakeGesture1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGesture1UITests.swift; sourceTree = "<group>"; };
 		671BC44923E32CD60096C40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		671BC45523E6D8AE0096C40F /* light_saber3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = light_saber3.mp3; sourceTree = "<group>"; };
+		671BC45523E6D8AE0096C40F /* lightSaber_swing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = lightSaber_swing.mp3; sourceTree = "<group>"; };
 		6792454623EB01790006C427 /* katana-slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "katana-slash.mp3"; sourceTree = "<group>"; };
 		6792454D23EB1ECB0006C427 /* motorBike_engine1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engine1.mp3; sourceTree = "<group>"; };
 		6792454E23EB1ECB0006C427 /* motorBike_engineStart.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engineStart.mp3; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 			children = (
 				6792454823EB04B10006C427 /* Katana */,
 				6792454923EB04CC0006C427 /* LightSaber */,
-				6792454A23EB04D90006C427 /* Inaba */,
+				6792454A23EB04D90006C427 /* UltraSoul */,
 				6792454B23EB04E10006C427 /* Pistol */,
 				6792454C23EB04E80006C427 /* MotorBike */,
 			);
@@ -202,13 +202,13 @@
 		6792454923EB04CC0006C427 /* LightSaber */ = {
 			isa = PBXGroup;
 			children = (
-				591065BB23EAA01C00E99968 /* electric_chain.mp3 */,
-				671BC45523E6D8AE0096C40F /* light_saber3.mp3 */,
+				591065BB23EAA01C00E99968 /* lightSaber_start.mp3 */,
+				671BC45523E6D8AE0096C40F /* lightSaber_swing.mp3 */,
 			);
 			path = LightSaber;
 			sourceTree = "<group>";
 		};
-		6792454A23EB04D90006C427 /* Inaba */ = {
+		6792454A23EB04D90006C427 /* UltraSoul */ = {
 			isa = PBXGroup;
 			children = (
 				6792455623EB1EE90006C427 /* ultraSoul_1.mp3 */,
@@ -217,7 +217,7 @@
 				6792455723EB1EE90006C427 /* ultraSoul_4.mp3 */,
 				6792455523EB1EE90006C427 /* ultraSoul_start.mp3 */,
 			);
-			path = Inaba;
+			path = UltraSoul;
 			sourceTree = "<group>";
 		};
 		6792454B23EB04E10006C427 /* Pistol */ = {
@@ -350,9 +350,9 @@
 				6792456523EB1F110006C427 /* pistol-fire.mp3 in Resources */,
 				591065C423EAB3A800E99968 /* katana_drawing.mp3 in Resources */,
 				671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */,
-				591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */,
+				591065BC23EAA01C00E99968 /* lightSaber_start.mp3 in Resources */,
 				6792455A23EB1EE90006C427 /* ultraSoul_start.mp3 in Resources */,
-				671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */,
+				671BC45623E6D8AE0096C40F /* lightSaber_swing.mp3 in Resources */,
 				6792455E23EB1EE90006C427 /* ultraSoul_2.mp3 in Resources */,
 				671BC42F23E32CD50096C40F /* Assets.xcassets in Resources */,
 				6792456423EB1F110006C427 /* pistol-reload.mp3 in Resources */,
