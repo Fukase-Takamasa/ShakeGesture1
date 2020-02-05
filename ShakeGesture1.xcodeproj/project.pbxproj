@@ -10,7 +10,7 @@
 		591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065BB23EAA01C00E99968 /* electric_chain.mp3 */; };
 		591065BE23EAAC4700E99968 /* Extension+Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */; };
 		591065C323EAB3A800E99968 /* katana_slash.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C023EAB3A700E99968 /* katana_slash.mp3 */; };
-		591065C423EAB3A800E99968 /* katana_drawing1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C123EAB3A800E99968 /* katana_drawing1.mp3 */; };
+		591065C423EAB3A800E99968 /* katana_drawing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C123EAB3A800E99968 /* katana_drawing.mp3 */; };
 		591065C823EAB51400E99968 /* katana_swing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C623EAB51400E99968 /* katana_swing.mp3 */; };
 		591065C923EAB51400E99968 /* katana_hold.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 591065C723EAB51400E99968 /* katana_hold.mp3 */; };
 		671BC42623E32CCE0096C40F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC42523E32CCE0096C40F /* AppDelegate.swift */; };
@@ -22,6 +22,7 @@
 		671BC43D23E32CD60096C40F /* ShakeGesture1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC43C23E32CD60096C40F /* ShakeGesture1Tests.swift */; };
 		671BC44823E32CD60096C40F /* ShakeGesture1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */; };
 		671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 671BC45523E6D8AE0096C40F /* light_saber3.mp3 */; };
+		67BFCC5423EAD6C1009CAFD5 /* SoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BFCC5323EAD6C1009CAFD5 /* SoundList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +46,7 @@
 		591065BB23EAA01C00E99968 /* electric_chain.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = electric_chain.mp3; sourceTree = "<group>"; };
 		591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Storyboard.swift"; sourceTree = "<group>"; };
 		591065C023EAB3A700E99968 /* katana_slash.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_slash.mp3; sourceTree = "<group>"; };
-		591065C123EAB3A800E99968 /* katana_drawing1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_drawing1.mp3; sourceTree = "<group>"; };
+		591065C123EAB3A800E99968 /* katana_drawing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_drawing.mp3; sourceTree = "<group>"; };
 		591065C623EAB51400E99968 /* katana_swing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_swing.mp3; sourceTree = "<group>"; };
 		591065C723EAB51400E99968 /* katana_hold.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = katana_hold.mp3; sourceTree = "<group>"; };
 		671BC42223E32CCE0096C40F /* ShakeGesture1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShakeGesture1.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +64,7 @@
 		671BC44723E32CD60096C40F /* ShakeGesture1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeGesture1UITests.swift; sourceTree = "<group>"; };
 		671BC44923E32CD60096C40F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		671BC45523E6D8AE0096C40F /* light_saber3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = light_saber3.mp3; sourceTree = "<group>"; };
+		67BFCC5323EAD6C1009CAFD5 /* SoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +97,7 @@
 			children = (
 				591065BB23EAA01C00E99968 /* electric_chain.mp3 */,
 				671BC45523E6D8AE0096C40F /* light_saber3.mp3 */,
-				591065C123EAB3A800E99968 /* katana_drawing1.mp3 */,
+				591065C123EAB3A800E99968 /* katana_drawing.mp3 */,
 				591065C723EAB51400E99968 /* katana_hold.mp3 */,
 				591065C623EAB51400E99968 /* katana_swing.mp3 */,
 				591065C023EAB3A700E99968 /* katana_slash.mp3 */,
@@ -131,6 +133,7 @@
 				671BC42723E32CCE0096C40F /* SceneDelegate.swift */,
 				591065BD23EAAC4700E99968 /* Extension+Storyboard.swift */,
 				671BC42923E32CCE0096C40F /* ViewController.swift */,
+				67BFCC5323EAD6C1009CAFD5 /* SoundList.swift */,
 				671BC42B23E32CCE0096C40F /* Main.storyboard */,
 				671BC42E23E32CD50096C40F /* Assets.xcassets */,
 				671BC43023E32CD50096C40F /* LaunchScreen.storyboard */,
@@ -262,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				591065C323EAB3A800E99968 /* katana_slash.mp3 in Resources */,
-				591065C423EAB3A800E99968 /* katana_drawing1.mp3 in Resources */,
+				591065C423EAB3A800E99968 /* katana_drawing.mp3 in Resources */,
 				671BC43223E32CD50096C40F /* LaunchScreen.storyboard in Resources */,
 				591065BC23EAA01C00E99968 /* electric_chain.mp3 in Resources */,
 				671BC45623E6D8AE0096C40F /* light_saber3.mp3 in Resources */,
@@ -297,6 +300,7 @@
 				671BC42A23E32CCE0096C40F /* ViewController.swift in Sources */,
 				671BC42623E32CCE0096C40F /* AppDelegate.swift in Sources */,
 				591065BE23EAAC4700E99968 /* Extension+Storyboard.swift in Sources */,
+				67BFCC5423EAD6C1009CAFD5 /* SoundList.swift in Sources */,
 				671BC42823E32CCE0096C40F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
