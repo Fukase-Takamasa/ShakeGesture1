@@ -67,18 +67,26 @@ class ViewController: UIViewController {
         }
         
         if !postBool && synthetic >= 4 {
-            shakeAudioPlayer.currentTime = 0 //再生中の音を止める
-            shakeAudioPlayer.play()
-            
+            if currentShakeSoundType {
+                shakeAudioPlayer.currentTime = 0
+                shakeAudioPlayer.play()
+            }else {
+                shakeAudioPlayer2.currentTime = 0
+                shakeAudioPlayer2.play()
+            }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
             
             preBool = true
         }
 
         if postBool && synthetic >= 4 {
-            shakeAudioPlayer.currentTime = 0
-            shakeAudioPlayer.play()
-            
+            if currentShakeSoundType {
+                shakeAudioPlayer.currentTime = 0
+                shakeAudioPlayer.play()
+            }else {
+                shakeAudioPlayer2.currentTime = 0
+                shakeAudioPlayer2.play()
+            }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate)) //バイブレーション
 
             postBool = false
@@ -97,17 +105,6 @@ class ViewController: UIViewController {
         }
     }
     
-    func changeShakeSoundInCurrentMode(_ currentShakeSoundType: Bool) -> Bool {
-        let segmentIndex = self.segmentControl.selectedSegmentIndex
-        if currentShakeSoundType {
-            setGyroSound(shakeSoundList[segmentIndex][1])
-            return false
-        }else {
-            setGyroSound(shakeSoundList[segmentIndex][0])
-            return true
-        }
-    }
-    
     func updateGyroData(data: CMRotationRate) {
         print("ジャイロデータ: \(data)")
         let y = data.y
@@ -115,7 +112,11 @@ class ViewController: UIViewController {
         
         if synthetic >= 8 {
             print("ジャイロセンサー反応")
-            currentShakeSoundType = changeShakeSoundInCurrentMode(currentShakeSoundType)
+            if currentShakeSoundType {
+                currentShakeSoundType = false
+            }else {
+                currentShakeSoundType = true
+            }
             shakeAudioPlayer.currentTime = 0
             gyroAudioPlayer.play()
             print("currentShakeSoundType: \(self.currentShakeSoundType)")
