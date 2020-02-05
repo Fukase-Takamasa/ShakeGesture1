@@ -54,7 +54,7 @@ class ViewController: UIViewController {
             postBool = true
         }
         
-        if !postBool && synthetic >= 5 {
+        if !postBool && synthetic >= 3 {
             audioPlayer.currentTime = 0 //再生中の音を止める
             audioPlayer.play()
             
