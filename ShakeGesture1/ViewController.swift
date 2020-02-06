@@ -25,11 +25,13 @@ class ViewController: UIViewController {
     var postBool = false
     var pistolBullets = 7
     
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var bulletsImageView: UIImageView!
     @IBOutlet weak var segmentControl: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setImages()
         setSounds()
         audioPlayer1.play()
         getAccelerometer()
@@ -37,6 +39,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapSegmentControl(_ sender: Any) {
+        setImages()
         setSounds()
         audioPlayer1.play()
     }
@@ -115,6 +118,30 @@ class ViewController: UIViewController {
 
 
 extension ViewController {
+    
+    func setImages() {
+        let index = self.segmentControl.selectedSegmentIndex
+        switch index {
+        case 0:
+            imageView.image = UIImage(named: "katanaImage")
+            bulletsImageView.isHidden = true
+        case 1:
+            imageView.image = UIImage(named: "lightSaberImage")
+            bulletsImageView.isHidden = true
+        case 2:
+            imageView.image = UIImage(named: "pistolImage")
+            bulletsImageView.isHidden = false
+            bulletsImageView.image = UIImage(named: "bullets\(pistolBullets)")
+        case 3:
+            imageView.image = UIImage(named: "motorBikeImage")
+            bulletsImageView.isHidden = true
+        case 4:
+            imageView.image = UIImage(named: "ultraSoulImage")
+            bulletsImageView.isHidden = true
+        default:
+            break
+        }
+    }
     
     func resetAllAudioPlayerTime() {
         audioPlayer1.currentTime = 0
@@ -221,6 +248,7 @@ extension ViewController {
                 preBool = false
             }
         }
+        bulletsImageView.image = UIImage(named: "bullets\(pistolBullets)")
     }
     
     func pistolGyro(_ x: Double, _ y: Double, _ z: Double) {
@@ -228,6 +256,7 @@ extension ViewController {
             pistolBullets = 7
             audioPlayer4.play()
             print("ピストルの弾をリロードしました  残弾数: \(pistolBullets)発")
+            bulletsImageView.image = UIImage(named: "bullets\(pistolBullets)")
         }
     }
     

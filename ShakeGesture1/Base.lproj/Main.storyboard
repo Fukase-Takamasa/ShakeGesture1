@@ -97,7 +97,14 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1wa-Rt-7LW">
-                                        <rect key="frame" x="24" y="225" width="326" height="463"/>
+                                        <rect key="frame" x="24" y="225" width="326" height="409"/>
+                                    </imageView>
+                                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yU7-lS-z9y">
+                                        <rect key="frame" x="24" y="559" width="326" height="115"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="326" id="Omv-Zf-6tN"/>
+                                            <constraint firstAttribute="height" constant="115" id="nqA-vS-Ygm"/>
+                                        </constraints>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96785789730000005" green="0.93018645050000004" blue="0.83918976779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -108,11 +115,14 @@
                                     <constraint firstItem="O9i-C7-jAN" firstAttribute="centerX" secondItem="Uvn-2f-zBz" secondAttribute="centerX" id="Nje-Pr-cKM"/>
                                     <constraint firstItem="Tyi-ED-dZj" firstAttribute="centerX" secondItem="Uvn-2f-zBz" secondAttribute="centerX" id="Nkk-Zb-P67"/>
                                     <constraint firstItem="JMa-Jx-vO2" firstAttribute="top" secondItem="Uvn-2f-zBz" secondAttribute="top" constant="100" id="Rfe-jU-QYV"/>
-                                    <constraint firstAttribute="bottom" secondItem="1wa-Rt-7LW" secondAttribute="bottom" constant="46" id="cSi-T8-eE8"/>
+                                    <constraint firstAttribute="bottom" secondItem="1wa-Rt-7LW" secondAttribute="bottom" constant="100" id="cSi-T8-eE8"/>
                                     <constraint firstItem="JMa-Jx-vO2" firstAttribute="leading" secondItem="Uvn-2f-zBz" secondAttribute="leading" id="dCp-n8-u5c"/>
                                     <constraint firstItem="Tyi-ED-dZj" firstAttribute="top" secondItem="Uvn-2f-zBz" secondAttribute="top" constant="147" id="gHu-Cq-BYX"/>
                                     <constraint firstAttribute="trailing" secondItem="JMa-Jx-vO2" secondAttribute="trailing" id="gyr-ke-nhO"/>
+                                    <constraint firstAttribute="bottom" secondItem="yU7-lS-z9y" secondAttribute="bottom" constant="60" id="iRU-rx-PqS"/>
                                     <constraint firstItem="O9i-C7-jAN" firstAttribute="width" secondItem="Uvn-2f-zBz" secondAttribute="width" constant="7.7999999999999998" id="id6-xv-8Zl"/>
+                                    <constraint firstAttribute="trailing" secondItem="yU7-lS-z9y" secondAttribute="trailing" constant="25" id="j60-mA-d2Z"/>
+                                    <constraint firstItem="yU7-lS-z9y" firstAttribute="leading" secondItem="Uvn-2f-zBz" secondAttribute="leading" constant="24" id="jaQ-f0-mGG"/>
                                     <constraint firstItem="O9i-C7-jAN" firstAttribute="top" secondItem="JMa-Jx-vO2" secondAttribute="bottom" constant="8" symbolic="YES" id="swI-0h-mzD"/>
                                     <constraint firstItem="Tyi-ED-dZj" firstAttribute="width" secondItem="JMa-Jx-vO2" secondAttribute="width" multiplier="0.78" id="yiw-mY-axb"/>
                                 </constraints>
@@ -139,6 +149,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bulletsImageView" destination="yU7-lS-z9y" id="Jal-AT-tyB"/>
+                        <outlet property="imageView" destination="1wa-Rt-7LW" id="eVR-ts-w0Q"/>
                         <outlet property="segmentControl" destination="O9i-C7-jAN" id="iGI-vV-H5f"/>
                     </connections>
                 </viewController>
