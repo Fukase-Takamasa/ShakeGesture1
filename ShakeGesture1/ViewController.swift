@@ -15,24 +15,24 @@ class ViewController: UIViewController {
     
     let motionManager = CMMotionManager()
     
-    var audioPlayer1 = AVAudioPlayer()
-    var audioPlayer2 = AVAudioPlayer()
+    var audioPlayer1 = AVAudioPlayer()  //アイテムごとの起動音
+    var audioPlayer2 = AVAudioPlayer()  //以下アクション音声　4パターン
     var audioPlayer3 = AVAudioPlayer()
     var audioPlayer4 = AVAudioPlayer()
     var audioPlayer5 = AVAudioPlayer()
     
-    var preBool = false
+    var preBool = false //連続アクション再生時に 前の音声が再生中か判断するもの
     var postBool = false
-    var pistolBullets = 7
+    var pistolBullets = 7 //ColtM1911（ピストル）の残弾数
     
-    @IBOutlet weak var segmentControl: UISegmentedControl!
+    @IBOutlet weak var segmentControl: UISegmentedControl! //5つのアイテムの切り替え管理
     @IBOutlet weak var button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setSounds()
-        audioPlayer1.play()
+        audioPlayer1.play() //選択されているアイテムの起動音を鳴らす
         getAccelerometer()
         getGyro()
     }
