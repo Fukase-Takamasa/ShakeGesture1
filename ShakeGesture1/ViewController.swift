@@ -369,99 +369,64 @@ extension ViewController: AVAudioPlayerDelegate {
         let index = self.segmentControl.selectedSegmentIndex
         switch index {
         case 0:
-            setAudioPlayer1("katana_drawing")
-            setAudioPlayer2("katana_slash")
-            setAudioPlayer3("katana_sting")
-            setAudioPlayer4("katana_hold")
+            setAudioPlayer(forIndex: 1, resourceFileName: "katana_drawing")
+            setAudioPlayer(forIndex: 2, resourceFileName: "katana_slash")
+            setAudioPlayer(forIndex: 3, resourceFileName: "katana_sting")
+            setAudioPlayer(forIndex: 4, resourceFileName: "katana_hold")
         case 1:
-            setAudioPlayer1("lightSaber_start")
-            setAudioPlayer2("lightSaber_swing")
+            setAudioPlayer(forIndex: 1, resourceFileName: "lightSaber_start")
+            setAudioPlayer(forIndex: 2, resourceFileName: "lightSaber_swing")
         case 2:
-            setAudioPlayer1("pistol-slide")
-            setAudioPlayer2("pistol-fire")
-            setAudioPlayer3("pistol-out-bullets")
-            setAudioPlayer4("pistol-reload")
+            setAudioPlayer(forIndex: 1, resourceFileName: "pistol-slide")
+            setAudioPlayer(forIndex: 2, resourceFileName: "pistol-fire")
+            setAudioPlayer(forIndex: 3, resourceFileName: "pistol-out-bullets")
+            setAudioPlayer(forIndex: 4, resourceFileName: "pistol-reload")
         case 3:
-            setAudioPlayer1("motorBike_engineStart")
-            setAudioPlayer2("motorBike_engine1")
-            setAudioPlayer3("motorBike_engine2")
-            setAudioPlayer4("motorBike_engine3")
+            setAudioPlayer(forIndex: 1, resourceFileName: "motorBike_engineStart")
+            setAudioPlayer(forIndex: 2, resourceFileName: "motorBike_engine1")
+            setAudioPlayer(forIndex: 3, resourceFileName: "motorBike_engine2")
+            setAudioPlayer(forIndex: 4, resourceFileName: "motorBike_engine3")
         case 4:
-            setAudioPlayer1("ultraSoul_start")
-            setAudioPlayer2("ultraSoul_1")
-            setAudioPlayer3("ultraSoul_2")
-            setAudioPlayer4("ultraSoul_3")
-            setAudioPlayer5("ultraSoul_4")
+            setAudioPlayer(forIndex: 1, resourceFileName: "ultraSoul_start")
+            setAudioPlayer(forIndex: 2, resourceFileName: "ultraSoul_1")
+            setAudioPlayer(forIndex: 3, resourceFileName: "ultraSoul_2")
+            setAudioPlayer(forIndex: 4, resourceFileName: "ultraSoul_3")
+            setAudioPlayer(forIndex: 5, resourceFileName: "ultraSoul_4")
         default:
             break
         }
     }
-    
-    func setAudioPlayer1(_ resourceFileName: String) {
-        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
-            print("shake音声ファイルが見つかりません")
-            return
-        }
-        do {
-            audioPlayer1 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audioPlayer1.delegate = self
-            audioPlayer1.prepareToPlay()
-        } catch {
-            print("shake音声セットエラー")
-        }
-    }
-    
-    func setAudioPlayer2(_ resourceFileName: String) {
-        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
-            print("shake2音声ファイルが見つかりません")
-            return
-        }
-        do {
-            audioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audioPlayer2.delegate = self
-            audioPlayer2.prepareToPlay()
-        } catch {
-            print("shake2音声セットエラー")
-        }
-    }
-    
-    func setAudioPlayer3(_ resourceFileName: String) {
-        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
-            print("start音声ファイルが見つかりません。")
-            return
-        }
-        do {
-            audioPlayer3 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audioPlayer3.delegate = self
-            audioPlayer3.prepareToPlay()
-        } catch {
-            print("start音声セットエラー")
-        }
-    }
-    
-    func setAudioPlayer4(_ resourceFileName: String) {
+
+    private func setAudioPlayer(forIndex index: Int, resourceFileName: String) {
         guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
             print("gyro音声ファイルが見つかりません。")
             return
         }
         do {
-            audioPlayer4 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audioPlayer4.delegate = self
-            audioPlayer4.prepareToPlay()
-        } catch {
-            print("gyro音声セットエラー")
-        }
-    }
-    
-    func setAudioPlayer5(_ resourceFileName: String) {
-        guard let path = Bundle.main.path(forResource: resourceFileName, ofType: "mp3") else {
-            print("gyro音声ファイルが見つかりません。")
-            return
-        }
-        do {
-            audioPlayer5 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-            audioPlayer5.delegate = self
-            audioPlayer5.prepareToPlay()
+            switch index {
+            case 1:
+                audioPlayer1 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer1.delegate = self
+                audioPlayer1.prepareToPlay()
+            case 2:
+                audioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer2.delegate = self
+                audioPlayer2.prepareToPlay()
+            case 3:
+                audioPlayer3 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer3.delegate = self
+                audioPlayer3.prepareToPlay()
+            case 4:
+                audioPlayer4 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer4.delegate = self
+                audioPlayer4.prepareToPlay()
+            case 5:
+                audioPlayer5 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                audioPlayer5.delegate = self
+                audioPlayer5.prepareToPlay()
+            default:
+                break
+            }
         } catch {
             print("gyro音声セットエラー")
         }
