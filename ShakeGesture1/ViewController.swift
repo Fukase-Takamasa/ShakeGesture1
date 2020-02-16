@@ -13,12 +13,12 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
-    enum SoundType {
-        case katana
-        case lightSaber
-        case pistol
-        case motorBike
-        case ultraSoul
+    enum SoundType: Int {
+        case katana = 0
+        case lightSaber = 1
+        case pistol = 2
+        case motorBike = 3
+        case ultraSoul = 4
     }
     
     let motionManager = CMMotionManager()
@@ -39,16 +39,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setImages()
-        setSounds()
+        let currentSoundType = SoundType(rawValue: self.segmentControl.selectedSegmentIndex)
+        setImages(for: currentSoundType)
+        setSounds(for: currentSoundType)
         audioPlayer1.play()
         getAccelerometer()
         getGyro()
     }
     
     @IBAction func tapSegmentControl(_ sender: Any) {
-        setImages()
-        setSounds()
+        let currentSoundType = SoundType(rawValue: self.segmentControl.selectedSegmentIndex)
+        setImages(for: currentSoundType)
+        setSounds(for: currentSoundType)
         audioPlayer1.play()
     }
     
@@ -127,27 +129,27 @@ class ViewController: UIViewController {
 
 extension ViewController {
     
-    func setImages() {
-        let index = self.segmentControl.selectedSegmentIndex
-        switch index {
-        case 0:
+    func setImages(for soundType: SoundType?) {
+        
+        guard let soundType = soundType else { return }
+        
+        switch soundType {
+        case .katana:
             imageView.image = UIImage(named: "katanaImage")
             bulletsImageView.isHidden = true
-        case 1:
+        case .lightSaber:
             imageView.image = UIImage(named: "lightSaberImage")
             bulletsImageView.isHidden = true
-        case 2:
+        case .pistol:
             imageView.image = UIImage(named: "pistolImage")
             bulletsImageView.isHidden = false
             bulletsImageView.image = UIImage(named: "bullets\(pistolBullets)")
-        case 3:
+        case .motorBike:
             imageView.image = UIImage(named: "motorBikeImage")
             bulletsImageView.isHidden = true
-        case 4:
+        case .ultraSoul:
             imageView.image = UIImage(named: "ultraSoulImage")
             bulletsImageView.isHidden = true
-        default:
-            break
         }
     }
     
@@ -373,35 +375,35 @@ extension ViewController {
 
 extension ViewController: AVAudioPlayerDelegate {
     
-    func setSounds() {
-        let index = self.segmentControl.selectedSegmentIndex
-        switch index {
-        case 0:
+    func setSounds(for soundType: SoundType?) {
+        
+        guard let soundType = soundType else { return }
+        
+        switch soundType {
+        case .katana:
             setAudioPlayer(forIndex: 1, resourceFileName: "katana_drawing")
             setAudioPlayer(forIndex: 2, resourceFileName: "katana_slash")
             setAudioPlayer(forIndex: 3, resourceFileName: "katana_sting")
             setAudioPlayer(forIndex: 4, resourceFileName: "katana_hold")
-        case 1:
+        case .lightSaber:
             setAudioPlayer(forIndex: 1, resourceFileName: "lightSaber_start")
             setAudioPlayer(forIndex: 2, resourceFileName: "lightSaber_swing")
-        case 2:
+        case .pistol:
             setAudioPlayer(forIndex: 1, resourceFileName: "pistol-slide")
             setAudioPlayer(forIndex: 2, resourceFileName: "pistol-fire")
             setAudioPlayer(forIndex: 3, resourceFileName: "pistol-out-bullets")
             setAudioPlayer(forIndex: 4, resourceFileName: "pistol-reload")
-        case 3:
+        case .motorBike:
             setAudioPlayer(forIndex: 1, resourceFileName: "motorBike_engineStart")
             setAudioPlayer(forIndex: 2, resourceFileName: "motorBike_engine1")
             setAudioPlayer(forIndex: 3, resourceFileName: "motorBike_engine2")
             setAudioPlayer(forIndex: 4, resourceFileName: "motorBike_engine3")
-        case 4:
+        case .ultraSoul:
             setAudioPlayer(forIndex: 1, resourceFileName: "ultraSoul_start")
             setAudioPlayer(forIndex: 2, resourceFileName: "ultraSoul_1")
             setAudioPlayer(forIndex: 3, resourceFileName: "ultraSoul_2")
             setAudioPlayer(forIndex: 4, resourceFileName: "ultraSoul_3")
             setAudioPlayer(forIndex: 5, resourceFileName: "ultraSoul_4")
-        default:
-            break
         }
     }
 
