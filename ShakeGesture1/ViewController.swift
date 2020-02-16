@@ -83,7 +83,6 @@ class ViewController: UIViewController {
         case 3:
             break
         case 4:
-//            ultraSoulAccelerometer(x, y, z)
             break
         default:
             break
@@ -110,7 +109,6 @@ class ViewController: UIViewController {
         let index = self.segmentControl.selectedSegmentIndex
         switch index {
         case 0:
-            //katanaGyro(x, y, z)
             break
         case 1:
             break
