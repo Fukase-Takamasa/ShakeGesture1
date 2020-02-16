@@ -13,6 +13,14 @@ import AudioToolbox
 
 class ViewController: UIViewController {
     
+    enum SoundType {
+        case katana
+        case lightSaber
+        case pistol
+        case motorBike
+        case ultraSoul
+    }
+    
     let motionManager = CMMotionManager()
     
     var audioPlayer1 = AVAudioPlayer()
