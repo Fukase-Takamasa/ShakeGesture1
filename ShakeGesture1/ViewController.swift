@@ -189,12 +189,6 @@ extension ViewController {
         }
     }
     
-//    func katanaGyro(_ x: Double, _ y: Double, _ z: Double) {
-//        if (y * y) >= 5 {
-//            audioPlayer4.play()
-//        }
-//    }
-    
     func lightSaberAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
         let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
         if preBool {
@@ -310,16 +304,7 @@ extension ViewController {
             }
         }
     }
-    
-//    func ultraSoulAccelerometer(_ x: Double, _ y: Double, _ z: Double) {
-//        let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
-//        if synthetic >= 15 {
-//            resetAllAudioPlayerTime()
-//            audioPlayer5.play()
-//            vibration()
-//        }
-//    }
-    
+
     func ultraSoulGyro(_ x: Double, _ y: Double, _ z: Double) {
         let synthetic = (x * x) + (y * y) + (z * z) //合成加速度
         if preBool {
