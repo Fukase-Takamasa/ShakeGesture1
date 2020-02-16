@@ -11,7 +11,7 @@ import CoreMotion
 import AVFoundation
 import AudioToolbox
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     enum SoundType: Int {
         case katana = 0
@@ -125,7 +125,7 @@ class ViewController: UIViewController {
 }
 
 
-extension ViewController {
+extension MainViewController {
     
     func setImages(for soundType: SoundType?) {
         
@@ -371,7 +371,7 @@ extension ViewController {
     }
 }
 
-extension ViewController: AVAudioPlayerDelegate {
+extension MainViewController: AVAudioPlayerDelegate {
     
     func setSounds(for soundType: SoundType?) {
         
