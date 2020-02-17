@@ -67,9 +67,6 @@ class MainViewController: UIViewController {
     }
 }
 
-//extension MainViewController: AVAudioPlayerDelegate {
-//}
-
 extension MainViewController: MainViewInterface {
     
     func setImages(for soundType: SoundType?, pistolBulletsCount: Int) {
@@ -171,23 +168,18 @@ extension MainViewController {
             switch index {
             case 1:
                 audioPlayer1 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-//                audioPlayer1.delegate = self
                 audioPlayer1.prepareToPlay()
             case 2:
                 audioPlayer2 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-//                audioPlayer2.delegate = self
                 audioPlayer2.prepareToPlay()
             case 3:
                 audioPlayer3 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-//                audioPlayer3.delegate = self
                 audioPlayer3.prepareToPlay()
             case 4:
                 audioPlayer4 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-//                audioPlayer4.delegate = self
                 audioPlayer4.prepareToPlay()
             case 5:
                 audioPlayer5 = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
-//                audioPlayer5.delegate = self
                 audioPlayer5.prepareToPlay()
             default:
                 break
