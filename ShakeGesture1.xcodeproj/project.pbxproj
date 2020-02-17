@@ -38,6 +38,7 @@
 		6792456A23EC71980006C427 /* motorBike_engine1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6792456923EC71970006C427 /* motorBike_engine1.mp3 */; };
 		67BFCC5423EAD6C1009CAFD5 /* SoundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BFCC5323EAD6C1009CAFD5 /* SoundList.swift */; };
 		864372EC23F9152A00947408 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864372EB23F9152A00947408 /* MainPresenter.swift */; };
+		864372F023F9785200947408 /* CalcuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 864372EF23F9785200947408 /* CalcuModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		6792456923EC71970006C427 /* motorBike_engine1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = motorBike_engine1.mp3; sourceTree = "<group>"; };
 		67BFCC5323EAD6C1009CAFD5 /* SoundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundList.swift; sourceTree = "<group>"; };
 		864372EB23F9152A00947408 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		864372EF23F9785200947408 /* CalcuModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcuModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +169,7 @@
 				671BC42E23E32CD50096C40F /* Assets.xcassets */,
 				671BC43023E32CD50096C40F /* LaunchScreen.storyboard */,
 				671BC43323E32CD50096C40F /* Info.plist */,
+				864372EE23F9782200947408 /* Model */,
 				864372ED23F9152F00947408 /* Presenter */,
 			);
 			path = ShakeGesture1;
@@ -251,6 +254,14 @@
 				864372EB23F9152A00947408 /* MainPresenter.swift */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		864372EE23F9782200947408 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				864372EF23F9785200947408 /* CalcuModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -410,6 +421,7 @@
 				591065BE23EAAC4700E99968 /* Extension+Storyboard.swift in Sources */,
 				67BFCC5423EAD6C1009CAFD5 /* SoundList.swift in Sources */,
 				671BC42823E32CCE0096C40F /* SceneDelegate.swift in Sources */,
+				864372F023F9785200947408 /* CalcuModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
